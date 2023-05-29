@@ -27,13 +27,13 @@ const router = createRouter({
 })
 
 
-const ConfigRouter = () => {
-  // 权限匹配
-  RoutesConfig.forEach((item) => {
-    router.addRoute('mainbox', item)
-  })
-  state.commit('changeRouter', true)
-}
+// const ConfigRouter = () => {
+// 权限匹配
+RoutesConfig.forEach((item) => {
+  router.addRoute('mainbox', item)
+})
+// state.commit('changeRouter', true)
+// }
 
 // 路由守卫
 // router.beforeEach(to, from, next => {
