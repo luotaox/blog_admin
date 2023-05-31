@@ -48,7 +48,7 @@ const outLogin = () => {
   // 确认组件
   ElMessageBox.confirm(
     '是否退出?',
-    'Warning',
+    '提示',
     {
       confirmButtonText: '确认',
       cancelButtonText: '否',

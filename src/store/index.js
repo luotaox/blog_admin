@@ -6,7 +6,9 @@ export default createStore({
     // 访问权限
     isGettterRouter: false,
     // menu展开事件
-    isCollapsed: false
+    isCollapsed: false,
+    // 用户信息
+    userInfo: {}
   },
   getters: {
   },
@@ -18,6 +20,13 @@ export default createStore({
     // menu事件
     changeCollapsed(state) {
       state.isCollapsed = !state.isCollapsed
+    },
+    // 监听用户信息变化事件
+    changeUserInfo(state, value) {
+      state.userInfo = {
+        ...state.userInfo,
+        ...value
+      }
     }
   },
   actions: {
@@ -26,6 +35,6 @@ export default createStore({
   },
   plugins: [createPersistedState({
     //决定谁持久化
-    paths: ['isCollapsed']
+    paths: ['isCollapsed', 'userInfo']
   })]
 })

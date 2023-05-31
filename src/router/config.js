@@ -6,7 +6,6 @@ const NewsAdd = () => import('@/views/news/NewsAdd.vue')
 const NewsList = () => import('@/views/news/NewsList.vue')
 const Home = () => import('@/views/home/Home.vue')
 const Centent = () => import('@/views/centent/Centent.vue')
-const NotFound = () => import('@/views/notfound/NotFound.vue')
 
 
 const routes = [
@@ -36,15 +35,11 @@ const routes = [
   },
   {
     path: '/home',
-    component: Home
+    component: Home,
   },
   {
     path: '/centent',
     component: Centent
-  },
-  {
-    path: '/:pathMatch(.*)*',
-    component: NotFound
   }
 ]
 

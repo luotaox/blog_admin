@@ -21,8 +21,12 @@
 import TopHeader from './TopHeader.vue'
 import SideMenu from './SideMenu.vue'
 import { useStore } from 'vuex'
+import { useRouter } from 'vue-router';
 
-const store = useStore()
+const store = useStore();
+const router = useRouter();
+
+router.push('/home')
 </script>
 
 <style lang="less" scoped>

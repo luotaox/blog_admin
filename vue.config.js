@@ -13,5 +13,13 @@ module.exports = {
       }),
     ],
   },
+  devServer: {
+    proxy: {
+      "/adminapi": {
+        target: "http://localhost:3000",
+        changeOrigun: true
+      }
+    }
+  }
 };
 

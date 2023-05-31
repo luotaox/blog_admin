@@ -32,11 +32,14 @@
 import { Lock, User } from '@element-plus/icons-vue'
 import { reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
+import axios from 'axios'
+import { useStore } from 'vuex'
 
 const router = useRouter();
+const store = useStore();
 const loginForm = reactive({
-  username: '',
-  password: ''
+  username: 'admin',
+  password: '123456'
 })
 
 const loginFormRef = ref()
@@ -65,9 +68,14 @@ const loginRules = reactive({
 // 登录
 const login = () => {
   // 效验表单
-  loginFormRef.value.validate((valid) => {
-    if (!valid) return ElMessage.error('请填写必要表单项')
+  loginFormRef.value.validate(async (valid) => {
+    if (!valid) return ElMessage.error('请填写必要表单项');
+    const res = await axios.post('/adminapi/user/login', loginForm);
+    if (res.status !== 201) return ElMessage.error("账号或密码错误");
+    // 存储userInfo
+    store.commit('changeUserInfo', res.data.data)
     router.push('/mainbox')
+    ElMessage.success('登录成功')
   });
 
 }
@@ -97,6 +105,10 @@ const resetForm = () => {
   100% {
     background-position: 0% 50%;
   }
+}
+
+/deep/.el-input__suffix-inner {
+  color: #409eff;
 }
 
 .formBox {
