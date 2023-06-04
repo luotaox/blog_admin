@@ -26,7 +26,6 @@ import { useRouter } from 'vue-router';
 const store = useStore();
 const router = useRouter();
 
-router.push('/home')
 </script>
 
 <style lang="less" scoped>

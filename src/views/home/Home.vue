@@ -1,34 +1,36 @@
 <template>
   <div class="home">
-    <!-- 面包屑区域 -->
-    <el-col class="bread">
-      <el-breadcrumb :separator-icon="ArrowRight">
-        <el-breadcrumb-item>首页</el-breadcrumb-item>
-      </el-breadcrumb>
-    </el-col>
-    <!-- 头像区域 -->
-    <el-col class="avatar">
-      <div class="text">
-        <el-avatar :size="60" :src="avatarUrl" />
-      </div>
-    </el-col>
-    <!-- 问候语区域 -->
-    <el-col style="margin-top: 2em;">
-      <div class="text">
-        <h3>Hi~ {{ Welcome }}</h3>
-      </div>
-    </el-col>
-    <el-col style="margin-top: 2em;">
-      <div class="text">
-        <h1>欢迎回来</h1>
-      </div>
-    </el-col>
+    <el-row>
+      <!-- 面包屑区域 -->
+      <el-col class="bread">
+        <el-breadcrumb :separator-icon="ArrowRight">
+          <el-breadcrumb-item>首页</el-breadcrumb-item>
+        </el-breadcrumb>
+      </el-col>
+      <!-- 头像区域 -->
+      <el-col class="avatar">
+        <div class="text">
+          <el-avatar :size="60" :src="avatarUrl" />
+        </div>
+      </el-col>
+      <!-- 问候语区域 -->
+      <el-col style="margin-top: 2em;">
+        <div class="text">
+          <h3>Hi~ {{ Welcome }}</h3>
+        </div>
+      </el-col>
+      <el-col style="margin-top: 2em;">
+        <div class="text">
+          <h1>欢迎回来</h1>
+        </div>
+      </el-col>
 
-    <el-col style="margin-top: 2em;">
-      <div class="text">
-        <h5>{{ store.state.userInfo.username }}</h5>
-      </div>
-    </el-col>
+      <el-col style="margin-top: 2em;">
+        <div class="text">
+          <h5>{{ store.state.userInfo.username }}</h5>
+        </div>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
@@ -40,7 +42,7 @@ import { ArrowRight } from '@element-plus/icons-vue'
 const store = useStore();
 // 用户头像
 const avatarUrl = computed(() => {
-  return store.state.userInfo.avatar ? store.state.userInfo.avatar : 'https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png'
+  return store.state.userInfo.avatar ? 'http://localhost:3000' + store.state.userInfo.avatar : 'https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png'
 })
 // 问候语
 const Welcome = computed(() => {
