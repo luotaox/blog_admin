@@ -23,7 +23,7 @@
             <span>个人信息</span>
           </template>
 
-          <el-form ref="UserRef" :model="userForm" :rules="UserRules" label-width="120px" :size="formSize" status-icon>
+          <el-form ref="UserRef" :model="userForm" :rules="UserRules" label-width="120px" status-icon>
             <!-- 用户名 -->
             <el-form-item label="用户名" prop="username">
               <el-input v-model="userForm.username" />
@@ -55,7 +55,7 @@
 <script setup>
 import { useStore } from 'vuex'
 import { computed, ref, reactive } from 'vue'
-import { ArrowRight, User } from '@element-plus/icons-vue'
+import { ArrowRight } from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus'
 // 图片上传封装方法
 import upload from '@/http/service/upload.js'

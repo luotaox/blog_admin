@@ -4,7 +4,7 @@
       <div class="text">
         <h2>新闻后台管理系统</h2>
       </div>
-      <el-form ref="loginFormRef" :model="loginForm" :rules="loginRules" :size="formSize" status-icon>
+      <el-form ref="loginFormRef" :model="loginForm" :rules="loginRules" status-icon>
         <el-form-item label="" prop="username">
           <el-icon style="margin-left: -2em; padding-right: 1em;">
             <User />
@@ -73,9 +73,10 @@ const login = () => {
     const res = await axios.post('/adminapi/user/login', loginForm);
     if (res.status !== 201) return ElMessage.error("账号或密码错误");
     // 存储userInfo
-    store.commit('changeUserInfo', res.data.data)
-    router.push('/mainbox')
-    ElMessage.success('登录成功')
+    store.commit('changeUserInfo', res.data.data);
+    router.push('/mainbox');
+    ElMessage.success('登录成功');
+    store.commit('changeRouter', false);
   });
 
 }

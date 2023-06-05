@@ -32,25 +32,43 @@ const router = createRouter({
 })
 
 
-// const ConfigRouter = () => {
-// 权限匹配
-RoutesConfig.forEach((item) => {
-  router.addRoute('mainbox', item)
-})
-//   store.state.commit('changeRouter', true)
-// }
+const ConfigRouter = () => {
+  if (!router.hasRoute('mainBox')) {
+    router.addRoute(
+      {
+        path: '/mainbox',
+        name: 'mainbox',
+        component: MainBox
+      }
+    )
+  }
+  // 权限匹配
+  RoutesConfig.forEach((item) => {
+    checkPermission(item) && router.addRoute('mainbox', item)
+  })
+  store.commit('changeRouter', true)
+}
+
+const checkPermission = (item) => {
+  if (item.requireAdmin) {
+    return store.state.userInfo.role === 1;
+  }
+  return true
+}
 
 // 路由守卫
-// router.beforeEach(to, from, next => {
-//   if (to === 'login') return next();
-//   const tokenStr = window.sessionStorage.getItem('token');
-// if (!tokenStr) return next('/login');
-// if (!store.state.isGettterRouter) {
-//   ConfigRouter();
-//   next({
-//     path: to.fullPath
-//   })
-// } else
-//   next();
-// })
+router.beforeEach((to, from, next) => {
+  if (to.name === 'login') return next();
+  const tokenStr = window.sessionStorage.getItem('token');
+  if (!tokenStr) return next('/login');
+  if (!store.state.isGettterRouter) {
+    // 删除所有嵌套路由
+    router.removeRoute('mainBox')
+    ConfigRouter();
+    next({
+      path: to.fullPath
+    })
+  } else
+    next();
+})
 export default router

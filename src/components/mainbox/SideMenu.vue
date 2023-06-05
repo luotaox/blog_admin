@@ -16,7 +16,7 @@
         <span>个人中心</span>
       </el-menu-item>
 
-      <el-sub-menu index="3">
+      <el-sub-menu index="3" v-admin>
         <template #title>
           <el-icon>
             <Avatar />
@@ -57,7 +57,17 @@ import { HomeFilled, UserFilled, Avatar, MessageBox, Reading } from '@element-pl
 import { useStore } from 'vuex'
 import { useRoute } from 'vue-router'
 const store = useStore();
-const route = useRoute()
+const route = useRoute();
+
+// 封装权限指令
+const vAdmin = {
+  mounted(el) {
+    if (store.state.userInfo.role !== 1) {
+      el.parentNode.removeChild(el)
+    }
+  },
+}
+
 </script>
 
 <style lang="less" scoped>

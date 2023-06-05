@@ -11,11 +11,13 @@ const Centent = () => import('@/views/centent/Centent.vue')
 const routes = [
   {
     path: '/useradd',
-    component: UserAdd
+    component: UserAdd,
+    requireAdmin: true
   },
   {
     path: '/userlist',
-    component: UserList
+    component: UserList,
+    requireAdmin: true
   },
   {
     path: '/productadd',
