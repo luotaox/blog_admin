@@ -6,7 +6,7 @@ const NewsAdd = () => import('@/views/news/NewsAdd.vue')
 const NewsList = () => import('@/views/news/NewsList.vue')
 const Home = () => import('@/views/home/Home.vue')
 const Centent = () => import('@/views/centent/Centent.vue')
-
+const EditNews = () => import('@/views/news/EditNews.vue')
 
 const routes = [
   {
@@ -42,6 +42,10 @@ const routes = [
   {
     path: '/centent',
     component: Centent
+  },
+  {
+    path: '/editnews/:id',
+    component: EditNews
   }
 ]
 

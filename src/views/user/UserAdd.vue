@@ -33,6 +33,7 @@
         <el-form-item label="头像上传" prop="avatar">
           <Upload :avatar="userAddForm.avatar" @avatarChange="handleChange" />
         </el-form-item>
+        <!-- 按钮区域 -->
         <el-form-item>
           <el-button @click="submitFrom" type="primary">添加用户</el-button>
         </el-form-item>
@@ -125,7 +126,6 @@ const submitFrom = () => {
     if (res.status !== 201) return ElMessage.error('添加失败');
     // 重置
     UserAddRef.value.resetFields();
-    userAddForm.avatar = '';
     ElMessage.success('添加成功')
   })
 }

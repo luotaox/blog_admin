@@ -191,7 +191,7 @@ const UserAddRules = reactive({
 
 // 对话框取消事件
 const close = () => {
-  editUserVisible = false
+  editUserVisible.value = false
   ElMessage.info('已取消')
 }
 
