@@ -43,6 +43,7 @@
 </template>
 
 <script setup>
+import axios from 'axios'
 import { ArrowRight } from '@element-plus/icons-vue'
 import { ref, reactive } from 'vue'
 // 图片上传封装组件
@@ -66,10 +67,20 @@ const UserAddRef = ref();
 const UserAddRules = reactive({
   username: [
     {
-      required: true,
-      message: '用户名不能为空',
-      trigger: 'blur'
-    },
+      trigger: 'blur',
+      validator: async (rule, value, callback) => {
+        if (value === '') {
+          callback(new Error('用户名不能为空'))
+        } else {
+          const { data: res } = await axios.post('adminapi/user/distinct', {
+            username: userAddForm.username
+          });
+          if (res.distinct === 0) {
+            callback(new Error('用户名已存在'))
+          }
+        }
+      },
+    }
   ],
   password: [
     {
@@ -129,6 +140,7 @@ const submitFrom = () => {
     ElMessage.success('添加成功')
   })
 }
+
 </script>
 
 <style lang="less" scoped>

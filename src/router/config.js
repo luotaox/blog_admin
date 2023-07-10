@@ -7,6 +7,7 @@ const NewsList = () => import('@/views/news/NewsList.vue')
 const Home = () => import('@/views/home/Home.vue')
 const Centent = () => import('@/views/centent/Centent.vue')
 const EditNews = () => import('@/views/news/EditNews.vue')
+const EditProduct = () => import('@/views/product/EditProduct.vue')
 
 const routes = [
   {
@@ -46,6 +47,10 @@ const routes = [
   {
     path: '/editnews/:id',
     component: EditNews
+  },
+  {
+    path: '/editproduct/:id',
+    component: EditProduct
   }
 ]
 

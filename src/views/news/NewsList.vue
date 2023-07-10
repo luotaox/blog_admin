@@ -21,7 +21,7 @@
             </template>
           </el-table-column>
           <!-- 修改时间 -->
-          <el-table-column label="创建时间">
+          <el-table-column label="修改时间">
             <template #default="scope">
               {{ formatTime.getTime(scope.row.editTime) }}
             </template>

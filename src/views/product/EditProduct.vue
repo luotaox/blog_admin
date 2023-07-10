@@ -1,10 +1,11 @@
 <template>
-  <div class="profuctAdd">
+  <div class="editproduct">
     <!-- 面包屑区域 -->
     <div class="bread">
       <el-breadcrumb :separator-icon="ArrowRight">
         <el-breadcrumb-item>产品管理</el-breadcrumb-item>
-        <el-breadcrumb-item>添加产品</el-breadcrumb-item>
+        <el-breadcrumb-item to="/productlist">产品列表</el-breadcrumb-item>
+        <el-breadcrumb-item>编辑产品</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
 
@@ -29,7 +30,7 @@
         </el-form-item>
         <!-- 按钮区域 -->
         <el-form-item>
-          <el-button @click="submitFrom" type="primary">添加产品</el-button>
+          <el-button @click="submitFrom" type="primary">更新产品</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -38,12 +39,17 @@
 
 <script setup>
 import { ArrowRight } from '@element-plus/icons-vue'
-import { ref, reactive } from 'vue'
+import { ref, reactive, onMounted } from 'vue'
 // 图片上传封装组件
 import Upload from '@/components/upload/Upload.vue'
 // 图片上传封装方法
 import upload from '@/http/service/upload.js'
+import { useRoute, useRouter } from 'vue-router'
+import axios from 'axios';
 
+const router = useRouter();
+const route = useRoute();
+const productAddRef = ref();
 // 表单对象
 const productAddForm = reactive({
   title: '',
@@ -53,7 +59,6 @@ const productAddForm = reactive({
   file: null,
 })
 
-const productAddRef = ref();
 // 表单验证规则
 const productAddRules = reactive({
   title: [
@@ -98,22 +103,28 @@ const handleChange = (file) => {
 const submitFrom = () => {
   productAddRef.value.validate(async (valid) => {
     if (!valid) return ElMessage.error('请填写必要表单项');
-    const res = await upload('/adminapi/product/add', productAddForm);
+    const res = await upload('/adminapi/product/list', productAddForm);
     if (res.status !== 201) return ElMessage.error('添加失败');
     // 重置
-    productAddRef.value.resetFields();
-    ElMessage.success('添加成功')
+    router.push('/productlist')
+    ElMessage.success('更新成功')
   })
 }
+
+onMounted(async () => {
+  const res = await axios.get(`/adminapi/product/list/${route.params.id}`);
+  if (res.status !== 201) return ElMessage.error('获取失败');
+  Object.assign(productAddForm, res.data.data[0])
+})
 </script>
 
 <style lang="less" scoped>
-.profuctAdd {
-  .product-form {
-    width: 55em;
-  }
+.form {
+  width: 55em;
 }
 
+
+// 封面上传样式
 /deep/.avatar-uploader .el-upload {
   border: 1px dashed #3d392a;
   border-radius: 6px;

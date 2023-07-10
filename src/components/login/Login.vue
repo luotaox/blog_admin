@@ -74,7 +74,7 @@ const login = () => {
     if (res.status !== 201) return ElMessage.error("账号或密码错误");
     // 存储userInfo
     store.commit('changeUserInfo', res.data.data);
-    router.push('/mainbox');
+    router.push('/home');
     ElMessage.success('登录成功');
     store.commit('changeRouter', false);
   });
