@@ -1,13 +1,17 @@
 const UserAdd = () => import('@/views/user/UserAdd.vue')
 const UserList = () => import('@/views/user/UserList.vue')
-const ProductAdd = () => import('@/views/product/ProductAdd')
-const ProductList = () => import('@/views/product/ProductList.vue')
-const NewsAdd = () => import('@/views/news/NewsAdd.vue')
-const NewsList = () => import('@/views/news/NewsList.vue')
 const Home = () => import('@/views/home/Home.vue')
 const Centent = () => import('@/views/centent/Centent.vue')
-const EditNews = () => import('@/views/news/EditNews.vue')
-const EditProduct = () => import('@/views/product/EditProduct.vue')
+const SiteInfo = () => import('@/views/site/SiteInfo.vue')
+const Footer = () => import('@/views/site/Footer.vue')
+const Focus = () => import('@/views/essay/Focus.vue')
+const EssayList = () => import('@/views/essay/EssayList')
+const Cate = () => import('@/views/essay/Cate.vue')
+const EssayAdd = () => import('@/views/essay/EssayAdd')
+const EditEssay = () => import('@/views/essay/EditEssay')
+const Friend = () => import('@/views/about/Friend')
+const Blog = () => import('@/views/about/Blog')
+
 
 const routes = [
   {
@@ -21,22 +25,6 @@ const routes = [
     requireAdmin: true
   },
   {
-    path: '/productadd',
-    component: ProductAdd
-  },
-  {
-    path: '/productlist',
-    component: ProductList
-  },
-  {
-    path: '/newsadd',
-    component: NewsAdd
-  },
-  {
-    path: '/newslist',
-    component: NewsList
-  },
-  {
     path: '/home',
     component: Home,
   },
@@ -45,12 +33,38 @@ const routes = [
     component: Centent
   },
   {
-    path: '/editnews/:id',
-    component: EditNews
+    path: '/editessay/:id',
+    component: EditEssay
   },
   {
-    path: '/editproduct/:id',
-    component: EditProduct
+    path: '/siteinfo',
+    component: SiteInfo
+  },
+  {
+    path: '/footer',
+    component: Footer
+  },
+  {
+    path: '/focus',
+    component: Focus
+  },
+  {
+    path: '/essay/list',
+    component: EssayList
+  },
+  {
+    path: '/categories',
+    component: Cate
+  },
+  {
+    path: '/essay',
+    component: EssayAdd
+  }, {
+    path: '/friend',
+    component: Friend
+  }, {
+    path: '/blog',
+    component: Blog
   }
 ]
 

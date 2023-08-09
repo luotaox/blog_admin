@@ -8,7 +8,11 @@ export default createStore({
     // menu展开事件
     isCollapsed: false,
     // 用户信息
-    userInfo: {}
+    userInfo: {},
+    // 背景图片
+    backGroundImg: '',
+    // 公告信息
+    notice: '',
   },
   getters: {
   },
@@ -27,7 +31,13 @@ export default createStore({
         ...state.userInfo,
         ...value
       }
-    }
+    },
+    changeImg(state, v) {
+      state.backGroundImg = v
+    },
+    changeNotice(state, v) {
+      state.notice = v
+    },
   },
   actions: {
   },
@@ -35,6 +45,6 @@ export default createStore({
   },
   plugins: [createPersistedState({
     //决定谁持久化
-    paths: ['isCollapsed', 'userInfo']
+    paths: ['isCollapsed', 'userInfo', 'backGroundImg', 'notice']
   })]
 })

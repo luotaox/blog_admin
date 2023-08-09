@@ -22,7 +22,8 @@
         <!-- 权限 -->
         <el-form-item label="权限" prop="password">
           <el-select v-model="userAddForm.role" style="width: 100%;" placeholder="请选择权限">
-            <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
+            <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"
+              :disabled="item.value === 1 ? true : false" />
           </el-select>
         </el-form-item>
         <!-- 个人简介 -->

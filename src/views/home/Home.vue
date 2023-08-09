@@ -42,7 +42,7 @@ import { ArrowRight } from '@element-plus/icons-vue'
 const store = useStore();
 // 用户头像
 const avatarUrl = computed(() => {
-  return store.state.userInfo.avatar ? 'http://localhost:3000' + store.state.userInfo.avatar : 'https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png'
+  return store.state.userInfo.avatar ? 'http://8.130.52.196:3000' + store.state.userInfo.avatar : 'https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png'
 })
 // 问候语
 const Welcome = computed(() => {

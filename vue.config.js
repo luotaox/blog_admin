@@ -14,10 +14,9 @@ module.exports = {
     ],
   },
   devServer: {
-    port: 8001,
     proxy: {
       "/adminapi": {
-        target: "http://localhost:3000",
+        target: "http://8.130.52.196:3000",
         changeOrigun: true
       }
     }

@@ -7,7 +7,7 @@
         </el-icon>
       </div>
       <div>
-        <span>新闻门户网站</span>
+        <span>博客后台管理</span>
       </div>
     </div>
 

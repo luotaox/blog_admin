@@ -28,7 +28,9 @@
             <el-form-item label="用户名" prop="username">
               <el-input v-model="userForm.username" />
             </el-form-item>
-            <!-- 性别 -->
+            <el-form-item label="密码" prop="password">
+              <el-input v-model="userForm.password" type="password" show-password />
+            </el-form-item>
             <el-form-item label="性别" prop="gender">
               <el-select v-model="userForm.gender" style="width: 100%;" placeholder="请选择性别">
                 <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
@@ -66,18 +68,19 @@ const store = useStore();
 
 // 用户头像
 const avatarUrl = computed(() => {
-  return store.state.userInfo.avatar ? 'http://localhost:3000' + store.state.userInfo.avatar : 'https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png'
+  return store.state.userInfo.avatar ? 'http://8.130.52.196:3000' + store.state.userInfo.avatar : 'https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png'
 })
 
 const UserRef = ref();
 // 用户信息
-const { username, gender, introduction, avatar } = store.state.userInfo;
+const { username, gender, introduction, avatar, name, password } = store.state.userInfo;
 const userForm = reactive({
   username,
+  password,
   gender,
   introduction,
   avatar,
-  file: ''
+  file: '',
 })
 
 // 验证规则
@@ -88,6 +91,11 @@ const UserRules = reactive({
       message: '用户名不能为空',
       trigger: 'blur'
     },
+    {
+      pattern: /^[A-Za-z0-9]+$/,
+      trigger: 'blur',
+      message: '用户名只能是数字或字母'
+    }
   ],
   gender: [
     {

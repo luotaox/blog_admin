@@ -21,7 +21,7 @@ const emit = defineEmits(["avatarChange"]);
 
 // 上传成功后图片显示
 const uploadAvatar = computed(() => {
-  return props.avatar.includes('blob') ? props.avatar : 'http://localhost:3000' + props.avatar;
+  return props.avatar.includes('blob') ? props.avatar : 'http://8.130.52.196:3000' + props.avatar;
 })
 
 // 图片上传change事件

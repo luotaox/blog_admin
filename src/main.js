@@ -5,7 +5,6 @@ import store from './store'
 import '@/http/index.js'
 
 
-
 const app = createApp(App)
 
 app.use(store).use(router).mount('#app')

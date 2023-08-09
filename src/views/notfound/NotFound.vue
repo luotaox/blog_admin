@@ -1,5 +1,5 @@
 <template>
   <div>
-    Not Found
+    找不到页面
   </div>
 </template>

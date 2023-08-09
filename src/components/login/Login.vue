@@ -2,20 +2,20 @@
   <div class="login">
     <div class="formBox">
       <div class="text">
-        <h2>新闻后台管理系统</h2>
+        <h2>博客后台管理系统</h2>
       </div>
       <el-form ref="loginFormRef" :model="loginForm" :rules="loginRules" status-icon>
         <el-form-item label="" prop="username">
           <el-icon style="margin-left: -2em; padding-right: 1em;">
             <User />
           </el-icon>
-          <el-input v-model="loginForm.username" />
+          <el-input v-model="loginForm.username" placeholder="username" />
         </el-form-item>
         <el-form-item label="" prop="password">
           <el-icon style="margin-left: -2em; padding-right: 1em;">
             <Lock />
           </el-icon>
-          <el-input type="password" v-model="loginForm.password" />
+          <el-input type="password" v-model="loginForm.password" show-password placeholder="password" />
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="login()">
@@ -38,8 +38,8 @@ import { useStore } from 'vuex'
 const router = useRouter();
 const store = useStore();
 const loginForm = reactive({
-  username: 'admin',
-  password: '123456'
+  username: '',
+  password: ''
 })
 
 const loginFormRef = ref()

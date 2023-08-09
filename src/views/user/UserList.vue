@@ -19,7 +19,7 @@
             <template #default="scope">
               <!-- 判断是否有头像 -->
               <div v-if="scope.row.avatar">
-                <el-avatar :size="50" :src="'http://localhost:3000' + scope.row.avatar"></el-avatar>
+                <el-avatar :size="50" :src="'http://8.130.52.196:3000' + scope.row.avatar"></el-avatar>
               </div>
               <div v-else>
                 <el-avatar :size="50" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" />
@@ -59,7 +59,8 @@
           <!-- 权限 -->
           <el-form-item label="角色" prop="role">
             <el-select v-model="editForm.role" placeholder="请选择角色" style="width: 100%;">
-              <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
+              <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"
+                :disabled="item.value === 1 ? true : false" />
             </el-select>
           </el-form-item>
           <!-- 个人简介 -->
@@ -84,7 +85,9 @@
 import { ref, onMounted, reactive } from 'vue'
 import axios from 'axios'
 import { ArrowRight } from '@element-plus/icons-vue'
+import { useStore } from 'vuex'
 
+const store = useStore();
 const editRef = ref();
 // table数据
 let tableData = ref([]);
@@ -94,7 +97,7 @@ let editUserVisible = ref(false)
 
 // 获取用户列表
 const getTableList = async () => {
-  const res = await axios.get('adminapi/user/list');
+  const res = await axios.get(`adminapi/user/list/${store.state.userInfo._id}`);
   if (res.status !== 201) return ElMessage.error('获取用户列表失败');
   tableData.value = res.data.data;
 }

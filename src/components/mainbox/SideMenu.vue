@@ -30,30 +30,43 @@
       <el-sub-menu index="4">
         <template #title>
           <el-icon>
-            <MessageBox />
+            <Monitor />
           </el-icon>
-          <span>新闻管理</span>
+          <span>网站设置</span>
         </template>
-        <el-menu-item index="/newsadd">创建新闻</el-menu-item>
-        <el-menu-item index="/newslist">新闻列表</el-menu-item>
+        <el-menu-item index="/siteinfo">网站基本信息</el-menu-item>
+        <el-menu-item index="/footer">页脚设置</el-menu-item>
       </el-sub-menu>
 
       <el-sub-menu index="5">
         <template #title>
           <el-icon>
+            <MessageBox />
+          </el-icon>
+          <span>文章管理</span>
+        </template>
+        <el-menu-item index="/focus">聚焦设置</el-menu-item>
+        <el-menu-item index="/categories">文章分类</el-menu-item>
+        <el-menu-item index="/essay/list">文章列表</el-menu-item>
+        <el-menu-item index="/essay">写文章</el-menu-item>
+      </el-sub-menu>
+
+      <el-sub-menu index="6">
+        <template #title>
+          <el-icon>
             <Reading />
           </el-icon>
-          <span>产品管理</span>
+          <span>友链关于</span>
         </template>
-        <el-menu-item index="/productadd">添加产品</el-menu-item>
-        <el-menu-item index="/productlist">产品列表</el-menu-item>
+        <el-menu-item index="/friend">友联</el-menu-item>
+        <el-menu-item index="/blog">关于</el-menu-item>
       </el-sub-menu>
     </el-menu>
   </div>
 </template>
 
 <script setup>
-import { HomeFilled, UserFilled, Avatar, MessageBox, Reading } from '@element-plus/icons-vue'
+import { HomeFilled, UserFilled, Avatar, MessageBox, Reading, Monitor } from '@element-plus/icons-vue'
 import { useStore } from 'vuex'
 import { useRoute } from 'vue-router'
 const store = useStore();
